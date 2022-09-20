@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""docstring for Square"""
+# 0-square.py
+# Gedeon Obae Gekonge <gideonobae@gmail.com>
+"""Define a class Square."""
 
 
 class Square:
-    """docstring for init"""
-    def __init__(self):
-        pass
+    """Represent a square."""
+    pass

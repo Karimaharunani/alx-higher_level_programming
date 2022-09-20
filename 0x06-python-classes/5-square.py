@@ -1,32 +1,40 @@
 #!/usr/bin/python3
-"""docstring for Square"""
+# 5-square.py
+# Gedeon Obae Gekonge <gideonobae@gmail.com.com>
+"""Define a class Square."""
 
 
 class Square:
-    """docstring for init"""
-    def __init__(self, size=0):
+    """Represent a square."""
+
+    def __init__(self, size):
+        """Initialize a new square.
+        Args:
+            size (int): The size of the new square.
+        """
         self.size = size
-    """size getter method"""
+
     @property
     def size(self):
-        return self.__size
-    """size setter method"""
+        """Get/set the current size of the square."""
+        return (self.__size)
+
     @size.setter
     def size(self, value):
-        if isinstance(value, int) and value >= 0:
-            self.__size = value
-        elif not isinstance(value, int):
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
             raise ValueError("size must be >= 0")
-    """calculate the area of square"""
+        self.__size = value
+
     def area(self):
-        return (self.size ** 2)
-    """print hashtag of squares by the size given"""
+        """Return the current area of the square."""
+        return (self.__size * self.__size)
+
     def my_print(self):
-        # print(self.size)
-        if self.size == 0:
+        """Print the square with the # character."""
+        for i in range(0, self.__size):
+            [print("#", end="") for j in range(self.__size)]
             print("")
-        elif self.size > 0:
-            for i in range(self.size):
-                print("#" * self.size)
+        if self.__size == 0:
+            print("")
