@@ -1,23 +1,19 @@
--- https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql
--- run this first to import a SQL dump -->
---      echo "CREATE DATABASE hbtn_0d_tvshows;" | mysql -uroot -p
---      curl [link] -s | mysql -uroot -p hbtn_0d_tvshows
---
--- script that lists all non-Comedy shows in the database hbtn_0d_tvshows
--- tv_genres table contains only one record where name = Comedy (but the id can be different)
--- each record should display: tv_shows.title
--- results must be sorted in ascending order by the show title
--- can use max two SELECT statements
--- the database name will be passed as an argument of the mysql command
+-- Lists all shows without the comedy genre in the database hbtn_0d_tvshows.
+-- Records are ordered by ascending show title.
+SELECT DISTINCT `title`
+  FROM `tv_shows` AS t
+       LEFT JOIN `tv_show_genres` AS s
+       ON s.`show_id` = t.`id`
 
-    SELECT tv_shows.title
-      FROM tv_shows
-     WHERE tv_shows.title NOT IN (
-    SELECT tv_shows.title
-      FROM tv_shows
-INNER JOIN tv_show_genres
-        ON tv_shows.id = tv_show_genres.show_id
-INNER JOIN tv_genres
-      ON tv_show_genres.genre_id = tv_genres.id
-     WHERE tv_genres.name = "Comedy")
-  ORDER BY tv_shows.title ASC;
+       LEFT JOIN `tv_genres` AS g
+       ON g.`id` = s.`genre_id`
+       WHERE t.`title` NOT IN
+             (SELECT `title`
+                FROM `tv_shows` AS t
+	             INNER JOIN `tv_show_genres` AS s
+		     ON s.`show_id` = t.`id`
+
+		     INNER JOIN `tv_genres` AS g
+		     ON g.`id` = s.`genre_id`
+		     WHERE g.`name` = "Comedy")
+ ORDER BY `title`;
