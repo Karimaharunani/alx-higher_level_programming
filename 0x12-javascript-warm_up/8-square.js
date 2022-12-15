@@ -1,10 +1,10 @@
 #!/usr/bin/node
-const x = process.argv[2];
-const change = parseInt(x);
-if (isNaN(change)) {
+// script that prints a square
+const size = process.argv[2];
+if (isNaN(size)) {
   console.log('Missing size');
 } else {
-  for (let i = 0; i < x; i++) {
-    console.log('X'.repeat(x));
+  for (let i = 0; i < size; i++) {
+    console.log('X'.repeat(size));
   }
 }

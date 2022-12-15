@@ -1,7 +1,8 @@
 #!/usr/bin/node
+// JS Script
 module.exports = class Rectangle {
   constructor (w, h) {
-    if (h > 0 && w > 0) {
+    if (w > 0 && h > 0) {
       this.width = w;
       this.height = h;
     }
@@ -14,10 +15,11 @@ module.exports = class Rectangle {
   }
 
   rotate () {
-    [this.width, this.height] = [this.height, this.width];
+    this.width = [this.height, this.height = this.width][0];
   }
 
   double () {
-    [this.width, this.height] = [this.width * 2, this.height * 2];
+    this.width *= 2;
+    this.height *= 2;
   }
 };

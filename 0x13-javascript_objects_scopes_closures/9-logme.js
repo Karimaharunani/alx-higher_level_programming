@@ -1,15 +1,7 @@
 #!/usr/bin/node
-let count = 0;
+// JS Script
+let n = 0;
 exports.logMe = function (item) {
-  console.log(`${count++}: ${item}`);
+  console.log(n + ': ' + item);
+  n++;
 };
-/* exports.logMe = function (item) {
-  if (this.count === undefined) {
-    this.count = 0;
-  }
-  function argPrinter () {
-    console.log(`${this.count}: ${item}`);
-    this.count += 1;
-  }
-  return argPrinter();
-}; */

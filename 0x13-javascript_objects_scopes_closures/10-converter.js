@@ -1,8 +1,7 @@
 #!/usr/bin/node
+// JS Script
 exports.converter = function (base) {
-  this.base = base;
-  function myConverter (num) {
-    return num.toString(this.base);
-  }
-  return myConverter;
+  return function mainConvert (num) {
+    return num.toString(base);
+  };
 };
